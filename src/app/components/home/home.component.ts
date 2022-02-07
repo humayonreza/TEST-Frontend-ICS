@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   arrRaceState: any[] = [];
   status: string = 'Not Started';
   isSmart: boolean = false;
+  pauseText: string = 'Paused';
   // id: 1;
   // livery: 'blue';
   // name: 'Mr Ed';
@@ -22,11 +23,23 @@ export class HomeComponent implements OnInit {
   // id: 2, name: 'Shadowfax', distancetravelled: 3646}
   isPaused: boolean = false;
   pause() {
-    this.isPaused = true;
-    this.status = 'Race Paused';
+    // this.isPaused = this.isPaused == false ? true,(this.pauseText="Restart") : false;
+
+    if (this.isPaused == false) {
+      this.isPaused = true;
+      this.status = 'Race Paused';
+      this.pauseText = 'Restart';
+    } else {
+      this.isPaused = false;
+      this.pauseText = 'Pause';
+      this.status = 'Race Restarted';
+      this.start();
+    }
+  }
+  reset() {
+    location.reload();
   }
   start() {
-    this.isPaused = false;
     this.status = 'Race Started';
     this.t = setTimeout(() => {
       this.count = this.count + 1;

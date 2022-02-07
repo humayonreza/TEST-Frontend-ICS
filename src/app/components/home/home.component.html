@@ -57,6 +57,13 @@
         >
           Start
         </button>
+        <button
+          class="btn btn-md btn-success"
+          style="width: 100px; margin-left: 10px"
+          (click)="reset()"
+        >
+          reset
+        </button>
       </td>
       <td style="text-align: right; padding-right: 30px">
         <button
@@ -64,7 +71,7 @@
           style="width: 100px"
           (click)="pause()"
         >
-          Pause
+          {{ pauseText }}
         </button>
       </td>
     </tr>
