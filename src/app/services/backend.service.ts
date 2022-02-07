@@ -1,31 +1,27 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-// import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs';
+import { Resp } from './interfaces';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BackendService {
-  private baseUrl = 'http://localhost:8080/backendRESTAURANT/scripts/';
-
+  basePath: string = 'https://ics-hiring-app.azurewebsites.net/api/horses';
   constructor(private http: HttpClient) {}
 
-  submit_query(data: any) {
-    return this.http
-      .post(this.baseUrl + 'backend_service.php', JSON.stringify(data))
-      .map((response: any) => {
-        if (response && response != '401') {
-          return response;
-        } else return false;
-      });
+  fetchHorseData(): Observable<Resp[]> {
+    return this.http.get<Resp[]>(this.basePath);
   }
 
-  fetch_test_data(url: string) {
-    return this.http.get(url).map((response: any) => {
-      if (response && response != '401') {
-        return response;
-      } else return false;
-    });
+  fetch_performence(data: any): Observable<Resp[]> {
+    let endPoint =
+      'https://ics-hiring-app.azurewebsites.net/api/horses/' +
+      data.id +
+      '?secondselapsed=' +
+      data.secondselapsed;
+    return this.http.get<Resp[]>(endPoint);
   }
+  //
 }

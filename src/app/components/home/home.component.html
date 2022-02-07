@@ -1,0 +1,72 @@
+<div
+  class="col-sm-offset-1 col-sm-10 text-center"
+  style="margin-top: 20px; font-size: 35px"
+>
+  Technical Test - Front End
+  <p style="font-size: 12px">{{ status }}</p>
+</div>
+<div class="col-sm-offset-1 col-sm-10 text-left" style="margin-top: 20px">
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <div class="col-sm-12">
+          <div class="col-sm-4">
+            <td style="width: 40px">ID</td>
+            <td style="width: 150px">Name</td>
+            <td style="width: 140px">Dist Travelled</td>
+            <!-- <td style="width: 70px">Result</td> -->
+          </div>
+          <div class="col-sm-8"><td *ngIf="!isSmart">Animation</td></div>
+        </div>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of arrRaceState">
+        <td>
+          <div class="col-sm-12">
+            <div class="col-sm-4">
+              <td style="width: 40px">{{ data.id }}</td>
+              <td style="width: 150px">{{ data.name }}</td>
+              <td style="width: 140px">{{ data.distancetravelled }}</td>
+              <!-- <td style="width: 70px">{{ data.result }}</td> -->
+            </div>
+            <div class="col-sm-8">
+              <td>
+                <input
+                  [ngClass]="data.bgc"
+                  type="text"
+                  size="{{ data.distancetravelled / 30 }}"
+                  value="{{ data.result }}"
+                />
+              </td>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="col-sm-offset-1 col-sm-10" style="margin-top: 20px">
+  <table width="100%">
+    <tr>
+      <td style="text-align: left; padding-left: 30px">
+        <button
+          class="btn btn-md btn-primary"
+          style="width: 100px"
+          (click)="start()"
+        >
+          Start
+        </button>
+      </td>
+      <td style="text-align: right; padding-right: 30px">
+        <button
+          class="btn btn-md btn-danger"
+          style="width: 100px"
+          (click)="pause()"
+        >
+          Pause
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,5 @@
+.table td {
+  border: thin solid #8888;
+  padding: 5px;
+  font-weight: bold;
+}

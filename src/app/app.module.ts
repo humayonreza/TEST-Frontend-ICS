@@ -1,34 +1,42 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpBackend, HttpClientModule } from '@angular/common/http';
-// import { HttpModule } from '@angular/http';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import { HomeComponent } from './home/home.component';
-import { CreateorgComponent } from './createorg/createorg.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { RegisterComponent } from './register/register.component';
-// MAT Start
+import { AgmCoreModule } from '@agm/core';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
-import { AlgoComponent } from './algo/algo.component';
-// MAT End
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+
+import { HomeComponent } from './components/home/home.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
-    CreateorgComponent,
-    NavbarComponent,
-    RegisterComponent,
-    AlgoComponent,
+    HomeComponent,
+    
   ],
+  entryComponents: [],
   imports: [
+    MatDialogModule,
+    // SpeechSynthesisModule,
+    MatGridListModule,
+    MatTabsModule,
+    MatExpansionModule,
+    MatStepperModule,
     MatButtonModule,
+    MatIconModule,
     MatInputModule,
     MatSelectModule,
     HttpClientModule,
@@ -38,24 +46,34 @@ import { AlgoComponent } from './algo/algo.component';
     BrowserAnimationsModule,
     FormsModule,
     RouterModule,
+   
     RouterModule.forRoot(
       [
         {
           path: '',
           component: HomeComponent,
         },
-        {
-          path: 'register',
-          component: RegisterComponent,
-        },
-        {
-          path: 'create-org',
-          component: CreateorgComponent,
-        },
-        {
-          path: 'algo',
-          component: AlgoComponent,
-        },
+
+        // {
+        //   path: 'home',
+        //   component: HomeComponent,
+        // },
+        // {
+        //   path: 'roster',
+        //   component: RosterComponent,
+        // },
+        // {
+        //   path: 'compliances',
+        //   component: CompliancesComponent,
+        // },
+        // {
+        //   path: 'time-sheet',
+        //   component: TimesheetComponent,
+        // },
+        // {
+        //   path: 'manage/:id1/:id2',
+        //   component: ManageactComponent,
+        // },
       ],
       { onSameUrlNavigation: 'reload' }
     ),
